@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#ffffff" />
+  <title>Tap Tap România</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body class="public-page">
+  <div id="welcome" class="welcome" aria-hidden="true">
+    <div class="welcome-card">
+      <div class="welcome-flag"><span></span><span></span><span></span></div>
+      <div class="welcome-kicker">Bine ai venit în</div>
+      <h2>Tap Tap România</h2>
+      <p>Susține-ți județul. Fiecare tap contează.</p>
+    </div>
+  </div>
+
+  <div class="site-shell">
+    <header class="public-header">
+      <div class="brand-lockup">
+        <div class="brand-mark"><span></span><span></span><span></span></div>
+        <div>
+          <h1>Tap Tap România</h1>
+          <p>Tap pe județul tău. Clasamentul se actualizează live.</p>
+        </div>
+      </div>
+      <div class="live-pill"><span class="live-dot"></span> LIVE</div>
+    </header>
+
+    <main class="public-grid">
+      <section class="map-card">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">HARTA ROMÂNIEI</span>
+            <h2>Alege județul și dă-i energie</h2>
+          </div>
+          <div class="tap-hint">⚡ 40 ms între tap-uri</div>
+        </div>
+
+        <div class="map-stage">
+          <div id="map" class="svg-map" aria-label="Harta interactivă a României"></div>
+          <button id="bucharestTap" class="bucharest-orb" type="button" aria-label="Tap pentru București">
+            <span class="orb-code">B</span>
+            <span class="orb-name">București</span>
+            <strong id="bucharestScore">0</strong>
+          </button>
+        </div>
+
+        <div class="map-note">Apasă oriunde pe un județ. Pentru București ai butonul rotund separat.</div>
+      </section>
+
+      <aside class="ranking-card">
+        <div class="ranking-head">
+          <div>
+            <span class="eyebrow">CLASAMENT LIVE</span>
+            <h2>Cine conduce?</h2>
+          </div>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat-box"><span>Total tap-uri</span><b id="totalTaps">0</b></div>
+          <div class="stat-box"><span>Județe active</span><b id="liveCounties">0</b></div>
+        </div>
+        <div id="list" class="rank-list"></div>
+      </aside>
+    </main>
+
+    <footer class="public-footer">
+      <span>🇷🇴 41 județe + București</span>
+      <span>Telefon · tabletă · desktop</span>
+    </footer>
+  </div>
+
+  <div id="tapEffects" class="tap-effects" aria-hidden="true"></div>
+  <script src="/names.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>

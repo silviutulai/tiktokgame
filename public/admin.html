@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#ffffff" />
+  <title>Admin · Tap Tap România</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body class="admin-page">
+  <div class="admin-shell">
+    <section class="login-card" id="loginCard">
+      <div class="brand-mark large"><span></span><span></span><span></span></div>
+      <span class="eyebrow">PANOU SECURIZAT</span>
+      <h1>Admin Tap Tap România</h1>
+      <p>Autentifică-te pentru controlul jocului și monitorizarea live.</p>
+      <label>Utilizator<input id="user" autocomplete="username" /></label>
+      <label>Parolă<input id="pass" type="password" autocomplete="current-password" /></label>
+      <button class="primary-btn" id="loginBtn">Intră în panou</button>
+    </section>
+
+    <div class="admin-app" id="adminApp" hidden>
+      <header class="admin-header">
+        <div class="brand-lockup">
+          <div class="brand-mark"><span></span><span></span><span></span></div>
+          <div><h1>Panou admin</h1><p>Control și monitorizare live</p></div>
+        </div>
+        <div class="header-actions">
+          <a class="soft-btn" href="/" target="_blank">Deschide jocul ↗</a>
+          <button class="soft-btn" id="logoutBtn">Ieșire</button>
+        </div>
+      </header>
+
+      <main class="admin-content">
+        <section class="admin-stats">
+          <div><span>Tap-uri totale</span><b id="totalTaps">0</b></div>
+          <div><span>Județe active</span><b id="liveCounties">0</b></div>
+          <div><span>Stare</span><b class="status-live"><i></i> LIVE</b></div>
+        </section>
+
+        <section class="admin-layout">
+          <div class="admin-main-col">
+            <article class="admin-card admin-map-card">
+              <div class="card-title"><div><span class="eyebrow">PREVIEW LIVE</span><h2>Harta jocului</h2></div><span class="mini-note">Click pe județ = selectare</span></div>
+              <div class="admin-map-stage">
+                <div id="adminMap" class="svg-map admin-svg-map"></div>
+                <button id="adminBucharest" class="bucharest-orb admin-orb" type="button"><span class="orb-code">B</span><span class="orb-name">București</span><strong id="adminBucharestScore">0</strong></button>
+              </div>
+            </article>
+
+            <article class="admin-card">
+              <div class="card-title"><div><span class="eyebrow">CLASAMENT</span><h2>Actualizare în timp real</h2></div></div>
+              <div id="list" class="rank-list admin-rank-list"></div>
+            </article>
+          </div>
+
+          <aside class="admin-side-col">
+            <article class="admin-card control-card">
+              <span class="eyebrow">CONTROL SCOR</span>
+              <h2>Modifică punctele</h2>
+              <label>Județ<select id="adminCounty"></select></label>
+              <label>Puncte<input id="adminPoints" type="number" value="10" /></label>
+              <div class="quick-grid">
+                <button data-pts="1">+1</button><button data-pts="10">+10</button><button data-pts="50">+50</button>
+                <button data-pts="100">+100</button><button data-pts="-1">−1</button><button data-pts="-10">−10</button>
+              </div>
+              <button class="primary-btn" id="addPoints">Aplică valoarea</button>
+            </article>
+
+            <article class="admin-card tiktok-card">
+              <div class="tiktok-title-row">
+                <div>
+                  <span class="eyebrow">TIKTOK LIVE</span>
+                  <h2>Comentarii → puncte</h2>
+                </div>
+                <span id="tiktokBadge" class="tiktok-badge offline">OFF</span>
+              </div>
+              <p class="tiktok-help">Exemplu: cineva scrie <b>CJ</b>, <b>BV</b> sau <b>B</b> în chat și județul primește +1.</p>
+              <div class="tiktok-meta">
+                <span>Cont</span><strong id="tiktokUsername">—</strong>
+                <span>Conexiune</span><strong id="tiktokConnection">—</strong>
+              </div>
+              <button class="primary-btn" id="tiktokToggle">Pornește TikTok</button>
+              <div class="tiktok-feed-head"><span>Ultimele voturi TikTok</span><small>anti-spam activ</small></div>
+              <div id="tiktokFeed" class="tiktok-feed">
+                <div class="tiktok-empty">Încă nu există comentarii acceptate.</div>
+              </div>
+            </article>
+            <article class="admin-card danger-card">
+              <span class="eyebrow danger">RESET JOC</span>
+              <h2>Pornește de la zero</h2>
+              <p>Șterge toate tap-urile pentru toate județele. Acțiunea se vede instant și pe harta publică.</p>
+              <button class="danger-btn" id="resetBtn">Resetează toate scorurile</button>
+            </article>
+          </aside>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div class="confirm-modal" id="resetModal" hidden>
+    <div class="confirm-box">
+      <div class="danger-icon">!</div>
+      <h2>Resetezi toate scorurile?</h2>
+      <p>Toate județele vor reveni la 0. Acțiunea nu poate fi anulată.</p>
+      <div class="confirm-actions"><button class="soft-btn" id="cancelReset">Renunță</button><button class="danger-btn" id="confirmReset">Da, resetează</button></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <script src="/names.js"></script>
+  <script src="/admin.js"></script>
+</body>
+</html>
